@@ -1,0 +1,19 @@
+#!/bin/bash
+
+# recursively call sc script with url and name, name should be extracted from the url it self
+
+
+i=0
+input="./allurls.txt"
+while IFS= read -r line
+do
+i=$(($i + 1))
+#i=$i+1 
+filename=`echo $line | cut -d"-" -f2`"-"$i
+#echo $line"  : current url and  .. "$filename"  .. is the filename "
+./sc $line $filename
+
+
+done < "$input"
+
+
